@@ -1,8 +1,7 @@
 
-
 执行过程：
     0 download
-        git clone
+        git clone https://github.com/GIS90/weathers.git
     1 安装包
         cd weathers
         [sudo] pip install -r requirements.txt
@@ -13,7 +12,7 @@
     4 访问服务
         POST + 城市名称
 
-城市id命名规则（本人推测，如果不对望见谅）：
+城市id命名规则（本人推测，不对请见谅）：
     基础知识：
         中国34个省级行政区域，包括23个省，5个自治区，4个直辖市，2个特别行政区。
     规则一：
@@ -26,9 +25,17 @@
     规则二：
         101050101(黑龙江) ~ 101340101(台湾)，最后尾数从1开始计数
     规则三：
-        数据保康乡镇，街道等数据
+        数据到乡镇，街道等数据
         乡镇：101080503(cityid) + xxx(数字，001开始)
         街道：数据过于细致，没必要获取
     备注：
         本人能力有限，只初始化了到城市的数据
 
+所需知识：
+    git
+    python
+    http协议
+    curl
+
+测试API:
+    curl -X POST http://127.0.0.1:8888/weather/  -H 'Content-Type: application/json'  -d '{"city": "北京"}' | python -m json.tool
